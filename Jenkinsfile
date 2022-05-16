@@ -30,7 +30,8 @@ pipeline {
 
         script {
 
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+//           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+		docker.build("demo-project:${env.BUILD_NUMBER}")
 
         }
 
@@ -43,10 +44,17 @@ pipeline {
       steps{
 
         script {
+		echo "Docker Image Tag Name: ${dockerImageTag}"
+		
+		sh "docker stop demo-project"
+		
+		sh "docker rm demo-project"
+		
 
-          docker.withRegistry( '', registryCredential ) {
+          docker.withRegistry( 'https://registry.hub.docker.com',  'docker-creds' ) {
 
-            dockerImage.push()
+		  dockerImage.push("$env.BUILD_NUMBER}")
+		  dokcerImage.push("latest")
 
           }
 
