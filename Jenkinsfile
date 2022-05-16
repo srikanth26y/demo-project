@@ -44,9 +44,9 @@ pipeline {
       steps{
 
         script {
-		echo "Docker Image Tag Name: ${dockerImageTag}"
+// 		echo "Docker Image Tag Name: ${dockerImageTag}"
 		
-		echo "hello"
+// 		echo "hello"
 		
 // 		sh "docker stop dockerImage"
 		
@@ -56,9 +56,11 @@ pipeline {
 		docker.withRegistry('',  registryCredential ) {
 			
 		 
-			dockerImage.push("$env.BUILD_NUMBER}")
+// 			dockerImage.push("$env.BUILD_NUMBER}")
 		  
-			dokcerImage.push("latest")
+// 			dokcerImage.push("latest")
+			
+			sh "docker push srikanth26y/demo-project:latest"
 
           }
 
