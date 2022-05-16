@@ -46,9 +46,9 @@ pipeline {
         script {
 		echo "Docker Image Tag Name: ${dockerImageTag}"
 		
-		sh "docker stop dockerImage"
+// 		sh "docker stop dockerImage"
 		
-		sh "docker rm dockerImage"
+// 		sh "docker rm dockerImage"
 		
 		docker.withRegistry( 'https://registry.hub.docker.com',  registryCredential ) {
 		 
