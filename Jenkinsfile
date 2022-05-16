@@ -51,7 +51,7 @@ pipeline {
 		sh "docker rm demo-project"
 		
 
-          docker.withRegistry( 'https://registry.hub.docker.com',  'docker-creds' ) {
+          docker.withRegistry( 'https://registry.hub.docker.com',  registryCredential ) {
 
 		  dockerImage.push("$env.BUILD_NUMBER}")
 		  dokcerImage.push("latest")
