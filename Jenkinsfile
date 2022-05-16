@@ -50,7 +50,8 @@ pipeline {
 		
 // 		sh "docker rm dockerImage"
 		
-		docker.withRegistry( 'https://registry.hub.docker.com',  registryCredential ) {
+// 		docker.withRegistry( 'https://registry.hub.docker.com',  registryCredential ) {
+		docker.withRegistry( '',  registryCredential ) {
 		 
 			dockerImage.push("$env.BUILD_NUMBER}")
 		  
